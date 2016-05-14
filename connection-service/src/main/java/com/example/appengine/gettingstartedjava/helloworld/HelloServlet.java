@@ -1,5 +1,5 @@
-/*
- * Copyright 2016 Google Inc. All Rights Reserved.
+/**
+ * Copyright 2015 Google Inc. All Rights Reserved.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,18 +14,25 @@
  * limitations under the License.
  */
 
-package myapp;
+package com.example.appengine.gettingstartedjava.helloworld;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class DemoServlet extends HttpServlet {
+// [START example]
+@SuppressWarnings("serial")
+@WebServlet(name = "helloworld", value = "/" )
+public class HelloServlet extends HttpServlet {
+
   @Override
-  public void doGet(HttpServletRequest req, HttpServletResponse resp)
-      throws IOException {
-    resp.setContentType("text/plain");
-    resp.getWriter().println("{ \"name\": \"World\" }");
+  public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    PrintWriter out = resp.getWriter();
+    out.println("Hello, world");
   }
 }
+// [END example]
